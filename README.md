@@ -80,16 +80,6 @@ The project typically achieves:
 - **Best Model**: Usually Logistic Regression or SVM performs best
 - **Insights**: Clear patterns in positive vs negative review language
 
-## 🔍 Sample Predictions
-
-```python
-# Example usage
-predict_sentiment("This product is amazing! Great quality and fast delivery.")
-# Output: ('Positive', 0.92)
-
-predict_sentiment("Terrible quality, waste of money. Very disappointed.")
-# Output: ('Negative', 0.88)
-```
 
 ## 📈 Key Insights & Findings
 
@@ -130,9 +120,8 @@ This project is open source and available under the [MIT License](LICENSE).
 ## 👨‍💻 Author
 
 **Data Science Project**
-- 📧 Email: [your.email@example.com]
-- 💼 LinkedIn: [Your LinkedIn Profile]
-- 🐙 GitHub: [Your GitHub Profile]
+- 📧 Email: krunal6214@gmail.com
+- 💼 LinkedIn: www.linkedin.com/in/krunal-patil-080aa2315
 
 ## 🙏 Acknowledgments
 
