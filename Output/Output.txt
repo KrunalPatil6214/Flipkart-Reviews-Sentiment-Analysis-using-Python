@@ -1,0 +1,232 @@
+================================================================================
+FLIPKART REVIEWS SENTIMENT ANALYSIS PROJECT
+================================================================================
+Objective: Develop a Machine Learning model to classify product reviews
+Dataset: Flipkart Reviews with ratings
+================================================================================
+
+1. LOADING AND EXPLORING THE DATASET
+--------------------------------------------------
+Dataset Shape: (9976, 2)
+Columns: ['review', 'rating']
+
+First 5 rows:
+                                              review  rating
+0  It was nice produt. I like it's design a lot. ...       5
+1  awesome sound....very pretty to see this nd th...       5
+2  awesome sound quality. pros 7-8 hrs of battery...       4
+3  I think it is such a good product not only as ...       5
+4  awesome bass sound quality very good bettary l...       5
+
+Dataset Info:
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 9976 entries, 0 to 9975
+Data columns (total 2 columns):
+ #   Column  Non-Null Count  Dtype 
+---  ------  --------------  ----- 
+ 0   review  9976 non-null   object
+ 1   rating  9976 non-null   int64 
+dtypes: int64(1), object(1)
+memory usage: 156.0+ KB
+None
+
+Missing Values:
+review    0
+rating    0
+dtype: int64
+
+Rating Distribution:
+rating
+1     691
+2     310
+3     884
+4    2365
+5    5726
+Name: count, dtype: int64
+
+
+2. DATA PREPROCESSING
+--------------------------------------------------
+Duplicate rows before removal: 2108
+Duplicate rows after removal: 0
+Final dataset shape: (7868, 2)
+
+Sentiment Distribution:
+Negative (0): 1670
+Positive (1): 6198
+
+Applying text preprocessing...
+Dataset shape after preprocessing: (7839, 4)
+
+
+3. EXPLORATORY DATA ANALYSIS
+--------------------------------------------------
+
+Generating Word Clouds...
+
+Top 10 words in positive reviews:
+good: 3546
+product: 2650
+sound: 2277
+qualiti: 2098
+bass: 1520
+headphon: 1363
+nice: 1122
+best: 1054
+awesom: 978
+use: 963
+
+Top 10 words in negative reviews:
+good: 724
+sound: 515
+qualiti: 491
+product: 464
+ear: 378
+use: 375
+headphon: 274
+work: 268
+bluetooth: 218
+buy: 202
+
+
+4. FEATURE ENGINEERING WITH TF-IDF
+--------------------------------------------------
+TF-IDF Feature Matrix Shape: (7839, 5000)
+Number of samples: 7839
+Number of features: 5000
+Training set size: 6271
+Test set size: 1568
+Training set sentiment distribution:
+sentiment
+1    0.788072
+0    0.211928
+Name: proportion, dtype: float64
+
+
+5. MODEL TRAINING AND SELECTION
+--------------------------------------------------
+Training Logistic Regression...
+Training Naive Bayes...
+Training Random Forest...
+Training SVM...
+
+
+6. MODEL EVALUATION
+--------------------------------------------------
+
+Logistic Regression Performance:
+Accuracy: 0.8673
+Precision: 0.8682
+Recall: 0.9806
+F1-Score: 0.9210
+
+Naive Bayes Performance:
+Accuracy: 0.8610
+Precision: 0.8585
+Recall: 0.9862
+F1-Score: 0.9179
+
+Random Forest Performance:
+Accuracy: 0.8648
+Precision: 0.8743
+Recall: 0.9676
+F1-Score: 0.9186
+
+SVM Performance:
+Accuracy: 0.8731
+Precision: 0.8821
+Recall: 0.9684
+F1-Score: 0.9233
+
+============================================================
+MODEL COMPARISON SUMMARY
+============================================================
+                     Accuracy  Precision  Recall  F1-Score
+Logistic Regression    0.8673     0.8682  0.9806    0.9210
+Naive Bayes            0.8610     0.8585  0.9862    0.9179
+Random Forest          0.8648     0.8743  0.9676    0.9186
+SVM                    0.8731     0.8821  0.9684    0.9233
+
+Best Model: SVM
+Best F1-Score: 0.9233
+
+
+DETAILED EVALUATION OF SVM
+--------------------------------------------------
+Classification Report:
+              precision    recall  f1-score   support
+
+    Negative       0.82      0.52      0.63       332
+    Positive       0.88      0.97      0.92      1236
+
+    accuracy                           0.87      1568
+   macro avg       0.85      0.74      0.78      1568
+weighted avg       0.87      0.87      0.86      1568
+
+
+
+7. TESTING WITH SAMPLE REVIEWS
+--------------------------------------------------
+Sample Predictions:
+
+Review 1: "This product is absolutely amazing! Great quality ..."
+Predicted Sentiment: Positive
+Confidence: 0.9914
+
+Review 2: "Terrible quality, waste of money. Would not recomm..."
+Predicted Sentiment: Negative
+Confidence: 0.8982
+
+Review 3: "Average product, nothing special but does the job...."
+Predicted Sentiment: Negative
+Confidence: 0.6312
+
+Review 4: "Outstanding performance! Exceeded my expectations ..."
+Predicted Sentiment: Positive
+Confidence: 0.9696
+
+Review 5: "Poor customer service and defective product. Very ..."
+Predicted Sentiment: Negative
+Confidence: 0.9695
+
+
+8. SAVING THE MODEL
+--------------------------------------------------
+Model and vectorizer saved successfully!
+Best model (SVM) saved as 'best_sentiment_model.pkl'
+TF-IDF vectorizer saved as 'tfidf_vectorizer.pkl'
+
+
+================================================================================
+PROJECT SUMMARY AND INSIGHTS
+================================================================================
+
+Dataset Analysis:
+- Total reviews analyzed: 7,839
+- Positive reviews: 6,178 (78.8%)
+- Negative reviews: 1,661 (21.2%)
+
+Best Model Performance:
+- Model: SVM
+- Accuracy: 0.8731
+- F1-Score: 0.9233
+- Precision: 0.8821
+- Recall: 0.9684
+
+Key Insights:
+1. The dataset shows a clear positive bias with more positive reviews than negative ones.
+2. TF-IDF vectorization with unigrams and bigrams provides good feature representation.
+3. SVM performs best for this sentiment analysis task.
+4. The model can effectively classify new reviews with high confidence.
+
+Future Improvements:
+1. Implement deep learning models (LSTM, BERT) for better accuracy.
+2. Use more advanced preprocessing techniques (lemmatization, spell correction).
+3. Implement cross-validation for more robust model evaluation.
+4. Consider ensemble methods combining multiple models.
+5. Add more sophisticated feature engineering (sentiment lexicons, POS tags).
+
+
+================================================================================
+PROJECT COMPLETED SUCCESSFULLY!
+================================================================================
